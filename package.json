@@ -1,0 +1,16 @@
+{
+  "name": "klarki",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1",
+    "@tauri-apps/plugin-sql": "^2.0.0-beta.7"
+  },
+  "dependencies": {
+    "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql#v1"
+  }
+}

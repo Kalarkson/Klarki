@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <ul class="tabs">
+      <li><a href="#" class="tab-link" data-tab="tab1">главная</a></li>
+      <li><a href="#" class="tab-link" data-tab="tab2">калькулятор</a></li>
+      <li><a href="#" class="tab-link" data-tab="tab3">заметки</a></li>
+      <li><a href="#" class="tab-link" data-tab="tab4">загруженность</a></li>
+      <li><a href="#" class="tab-link" data-tab="tab5">настройки</a></li>
+    </ul>
+    <div class="tab-content">
+      
+      <div id="tab1" class="tab-pane">
+        <div class="clock"></div>
+        <canvas id="waveform" width="400" height="400"></canvas>
+        <div class="circle"><img src="image/photo.jpg" alt="Photo"></div>
+      </div>
+
+      <div id="tab2" class="tab-pane">2</div>
+      
+      <div id="tab3" class="tab-pane">
+        <form id="task-form">
+          <input type="text" id="task-name" placeholder="Название заметки">
+          <textarea id="task-description" placeholder="Описание заметки"></textarea>
+          <button id="create-task-btn">Создать заметку</button>
+        </form>
+        <div class="task-container">
+          <ul id="task-list"></ul>
+        </div>
+      </div>
+
+      <div id="tab4" class="tab-pane">4</div>
+      <div id="tab5" class="tab-pane">5</div>
+      
+    </div>
+
+    
+    <div class="Klarki">Klarki</div>
+    <div class="version">v 0.1.0</div>
+    <img src="image/logo.png" alt="Logo" class="logo">
+    <div class="top-bar"></div>
+    <div class="top-bar2"></div>
+
+    <script src="js/notes.js"></script>
+    <script src="js/circle.js"></script>
+    <script src="js/line.js"></script>
+    <script src="js/tabs.js"></script>
+  </body>
+</html>
