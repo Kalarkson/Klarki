@@ -20,7 +20,63 @@
         <div class="circle"><img src="image/photo.jpg" alt="Photo"></div>
       </div>
 
-      <div id="tab2" class="tab-pane">2</div>
+      <div id="tab2" class="tab-pane">
+        <div class="container-calculator">
+          <div class="calculator">
+            <div class="calculator-screen" id="screen">0</div>
+            <div class="calculator-buttons">
+              <button class="calculator-button" onclick="clearAll()">AC</button>
+              <button class="calculator-button" onclick="clearLast()">C</button>
+              <button class="calculator-button" onclick="appendNumber('(')"> ( </button>
+              <button class="calculator-button" onclick="appendNumber(')')"> ) </button>
+              <button class="calculator-button" onclick="appendNumber('7')">7</button>
+              <button class="calculator-button" onclick="appendNumber('8')">8</button>
+              <button class="calculator-button" onclick="appendNumber('9')">9</button>
+              <button class="calculator-button operator" onclick="appendOperator('/')">/</button>
+              <button class="calculator-button" onclick="appendNumber('4')">4</button>
+              <button class="calculator-button" onclick="appendNumber('5')">5</button>
+              <button class="calculator-button" onclick="appendNumber('6')">6</button>
+              <button class="calculator-button operator" onclick="appendOperator('*')">*</button>
+              <button class="calculator-button" onclick="appendNumber('1')">1</button>
+              <button class="calculator-button" onclick="appendNumber('2')">2</button>
+              <button class="calculator-button" onclick="appendNumber('3')">3</button>
+              <button class="calculator-button operator" onclick="appendOperator('-')">-</button>
+              <button class="calculator-button" onclick="appendNumber('0')">0</button>
+              <button class="calculator-button" onclick="appendNumber('.')">.</button>
+              <button class="calculator-button equal" onclick="calculate()">=</button>
+              <button class="calculator-button operator" onclick="appendOperator('+')">+</button>
+            </div>
+          </div>
+          <div class="results-table-calculator">
+            <table>
+              <thead>
+                <tr>
+                  <th>Система счисления</th>
+                  <th>Результат</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Шестнадцатеричная</td>
+                  <td id="hexResult"></td>
+                </tr>
+                <tr>
+                  <td>Десятичная</td>
+                  <td id="decimalResult"></td>
+                </tr>
+                <tr>
+                  <td>Восьмеричная</td>
+                  <td id="octalResult"></td>
+                </tr>
+                <tr>
+                  <td>Двоичная</td>
+                  <td id="binaryResult"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
       
       <div id="tab3" class="tab-pane">
         <form id="task-form">
@@ -49,5 +105,6 @@
     <script src="js/circle.js"></script>
     <script src="js/line.js"></script>
     <script src="js/tabs.js"></script>
+    <script src="js/calculator.js"></script>
   </body>
 </html>

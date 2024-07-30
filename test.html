@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Калькулятор</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .container-calculator {
+      display: flex;
+      height: 100vh;
+    }
+
+    .calculator {
+      width: 300px;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .calculator-screen {
+      background-color: #444;
+      padding: 10px;
+      text-align: right;
+      font-size: 24px;
+      border-radius: 5px;
+    }
+
+    .calculator-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      margin-top: 20px;
+    }
+
+    .calculator-button {
+      background-color: #555;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .calculator-button:hover {
+      background-color: #777;
+    }
+
+    .calculator-button.operator {
+      background-color: #ff5555;
+    }
+
+    .calculator-button.operator:hover {
+      background-color: #ff7777;
+    }
+
+    .calculator-button.equal {
+      background-color: #55ff55;
+    }
+
+    .calculator-button.equal:hover {
+      background-color: #77ff77;
+    }
+
+    .results-table-calculator {
+      width: 300px;
+      margin-left: 20px;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .results-table-calculator th, .results-table-calculator td {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-calculator">
+    <div class="calculator">
+      <div class="calculator-screen" id="screen">0</div>
+      <div class="calculator-buttons">
+        <button class="calculator-button" onclick="clearAll()">AC</button>
+        <button class="calculator-button" onclick="clearLast()">C</button>
+        <button class="calculator-button" onclick="appendNumber('7')">7</button>
+        <button class="calculator-button" onclick="appendNumber('8')">8</button>
+        <button class="calculator-button" onclick="appendNumber('9')">9</button>
+        <button class="calculator-button operator" onclick="appendOperator('/')">/</button>
+        <button class="calculator-button" onclick="appendNumber('4')">4</button>
+        <button class="calculator-button" onclick="appendNumber('5')">5</button>
+        <button class="calculator-button" onclick="appendNumber('6')">6</button>
+        <button class="calculator-button operator" onclick="appendOperator('*')">*</button>
+        <button class="calculator-button" onclick="appendNumber('1')">1</button>
+        <button class="calculator-button" onclick="appendNumber('2')">2</button>
+        <button class="calculator-button" onclick="appendNumber('3')">3</button>
+        <button class="calculator-button operator" onclick="appendOperator('-')">-</button>
+        <button class="calculator-button" onclick="appendNumber('0')">0</button>
+        <button class="calculator-button" onclick="appendNumber('.')">.</button>
+        <button class="calculator-button equal" onclick="calculate()">=</button>
+        <button class="calculator-button operator" onclick="appendOperator('+')">+</button>
+        <button class="calculator-button" onclick="appendNumber('(')"> ( </button>
+        <button class="calculator-button" onclick="appendNumber(')')"> ) </button>
+      </div>
+    </div>
+    <div class="results-table-calculator">
+      <table>
+        <thead>
+          <tr>
+            <th>Система счисления</th>
+            <th>Результат</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Шестнадцатеричная</td>
+            <td id="hexResult"></td>
+          </tr>
+          <tr>
+            <td>Десятичная</td>
+            <td id="decimalResult"></td>
+          </tr>
+          <tr>
+            <td>Восьмеричная</td>
+            <td id="octalResult"></td>
+          </tr>
+          <tr>
+            <td>Двоичная</td>
+            <td id="binaryResult"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let expression = '';
+    let result = '';
+    let screen = document.getElementById('screen');
+    let binaryResult = document.getElementById('binaryResult');
+    let decimalResult = document.getElementById('decimalResult');
+    let octalResult = document.getElementById('octalResult');
+    let hexResult = document.getElementById('hexResult');
+
+    function appendNumber(number) {
+      if (result !== '') {
+        expression = '';
+        result = '';
+      }
+      expression += number;
+      screen.textContent = expression;
+    }
+
+    function appendOperator(operator) {
+      if (result !== '') {
+        expression = result;
+        result = '';
+      }
+      expression += operator;
+      screen.textContent = expression;
+    }
+
+    function calculate() {
+      try {
+        result = eval(expression);
+        screen.textContent = result;
+
+        // Обновление результатов в таблице
+        binaryResult.textContent = result.toString(2);
+        decimalResult.textContent = result.toString(10);
+        octalResult.textContent = result.toString(8);
+        hexResult.textContent = result.toString(16).toUpperCase();
+      } catch (error) {
+        screen.textContent = 'Ошибка';
+      }
+    }
+
+    function clearLast() {
+      if (result !== '') {
+        expression = '';
+        result = '';
+      } else {
+        expression = expression.slice(0, -1);
+      }
+      screen.textContent = expression;
+    }
+
+    function clearAll() {
+      expression = '';
+      result = '';
+      screen.textContent = '0';
+      binaryResult.textContent = '';
+      decimalResult.textContent = '';
+      octalResult.textContent = '';
+      hexResult.textContent = '';
+    }
+  </script>
+</body>
+</html>
